@@ -1,9 +1,9 @@
-import { onUnmounted, ref, type UnwrapRef } from "vue";
+import { onUnmounted, shallowRef, type UnwrapRef } from "vue";
 
 import type { AnyCell } from "@okcontract/cells";
 
 export const useCell = <T>(cell: AnyCell<T>) => {
-	const state = ref(undefined as undefined | T);
+	const state = shallowRef(undefined as undefined | T);
 	onUnmounted(
 		cell.subscribe((value) => {
 			if (value instanceof Error)
